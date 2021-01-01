@@ -16,16 +16,17 @@
   
   // initialization
   let preImage, targetImage; 
+  var index = 0;
   targetImage = 0;
   move(targetImage);
 
   // monitor the click event; click to move;
   spans.addEventListener("click",function(span){
-    let index = Array.prototype.indexOf.call(spans.children, span.target);
+    index = Array.prototype.indexOf.call(spans.children, span.target);
     slide(index);
   });
   // auto moving each 15000ms;
-  let index = 0;
+  
   let timer = setInterval(auto,1500);
   main.addEventListener("mouseenter",function(){
     window.clearInterval(timer);
@@ -37,13 +38,14 @@
     if(index > length -1 ){
       index = 0;
     }
+    console.log(this,index);
     slide(index);
     index++;
   }
 // how the images move;
   function slide(index){
     targetImage = index;
-    console.log(targetImage);
+    // console.log(targetImage);
     // from last picture to the first 
     if(preImage == length - 1 && targetImage == 0){
       console.log("last to first")
